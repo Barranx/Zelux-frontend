@@ -1,6 +1,8 @@
+const API_URL = "https://zelux-backend-sgyzz.onrender.com";
 // =========================
 // LOADER – NASCONDILO SEMPRE
 // =========================
+
 function hideLoader() {
     const loader = document.getElementById("loader");
     if (!loader) return;
@@ -91,13 +93,13 @@ async function sendContact(event) {
     }
 
     try {
-        const res = await fetch("http://127.0.0.1:8000/send-contact", {
+        const res = await fetch(`${API_URL}/send-contact`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                nome: nome,
-                email: email,
-                messaggio: messaggio
+                nome,
+                email,
+                messaggio
             })
         });
 
@@ -109,12 +111,13 @@ async function sendContact(event) {
 
     } catch (err) {
         console.error("Errore di rete verso backend:", err);
-        alert("Errore di connessione al server (contatto).");
+        alert("Errore di connessione al server.");
         return;
     }
 
     window.location.href = "success.html";
 }
+
 window.sendContact = sendContact;
 
 
@@ -236,3 +239,4 @@ document.addEventListener("keydown", function (e) {
         openDashboardPinPopup();
     }
 });
+
