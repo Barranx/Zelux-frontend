@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaggio Inviato – Zelux Studios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="hero" style="padding-top:160px; text-align:center;">
+        <div class="container glass-float" style="max-width: 700px; padding: 50px; border-radius: 25px;">
+            <h1 class="title-glow">Messaggio inviato con successo!</h1>
+
+            <p class="subtitle" style="margin-top:20px;">
+                Il tuo messaggio è stato inviato correttamente.<br>
+                Verrai reindirizzato alla home tra 3 secondi…
+            </p>
+
+            <a href="index.html" class="cta" style="margin-top:35px;">
+                Torna alla Home ora
+            </a>
+        </div>
+    </section>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 3000);
+    </script>
+
+</body>
+</html>
