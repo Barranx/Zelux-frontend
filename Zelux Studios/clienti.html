@@ -27,7 +27,7 @@ async function loadMessages() {
     }
 
     try {
-        const res = await fetch("http://127.0.0.1:8000/admin/messages", {
+        const res = await fetch(`${API_URL}/send-contact`, { 
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -71,3 +71,4 @@ document.addEventListener("DOMContentLoaded", loadMessages);
 
 </body>
 </html>
+
