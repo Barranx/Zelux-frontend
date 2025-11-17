@@ -1,4 +1,4 @@
-const API_URL = "https://zelux-backend-sgyzz.onrender.com";
+const API_URL = "https://zelux-backend-1.onrender.com";
 // =========================
 // LOADER – NASCONDILO SEMPRE
 // =========================
@@ -239,4 +239,5 @@ document.addEventListener("keydown", function (e) {
         openDashboardPinPopup();
     }
 });
+
 
