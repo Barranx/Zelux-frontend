@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaggio Inviato – Zelux Studios</title>
+
+    <!-- Usa sempre il CSS con anti-cache -->
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <!-- SEZIONE SUCCESSO -->
+    <section class="hero" style="padding-top:150px; text-align:center;">
+        <div class="container glass-float" 
+             style="max-width: 700px; padding: 55px; border-radius: 28px; animation: fadeUp 0.8s ease-out;">
+             
+            <h1 class="title-glow" style="font-size:2.6rem;">
+                ✔ Messaggio inviato con successo!
+            </h1>
+
+            <p class="subtitle" style="margin-top:20px; font-size:1.1rem; color:#f0e3a4;">
+                Grazie per averci contattato.<br>
+                Ti risponderemo il prima possibile!  
+                <br><br>
+                📦 Verrai reindirizzato alla home tra <b>3 secondi</b>.
+            </p>
+
+            <a href="index.html" class="cta" style="margin-top:35px;">
+                Torna subito alla Home
+            </a>
+        </div>
+    </section>
+
+    <!-- AUTO REDIRECT -->
+    <script>
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 3000);
+    </script>
+
+</body>
+</html>

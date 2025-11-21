@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Zelux Studios – Soluzioni Digitali Premium</title>
+
+    <!-- CSS / JS -->
+    <link rel="stylesheet" href="style.css?v=5" />
+    <script defer src="script.js?v=5"></script>
+
+    <!-- POPUP ADMIN / DASHBOARD -->
+    <style>
+        #admin-pin-popup,
+        #dashboard-pin-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .admin-popup-box {
+            width: 340px;
+            padding: 32px;
+            border-radius: 18px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            box-shadow: 0 0 25px rgba(230, 184, 0, 0.35);
+        }
+
+        .admin-popup-box h2 {
+            margin-bottom: 8px;
+            font-size: 1.7rem;
+            background: linear-gradient(90deg, #ffdf6e, #fff2b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-popup-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 14px 0;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.28);
+            background: rgba(255, 255, 255, 0.09);
+            color: #ffe9a3;
+        }
+
+        .admin-popup-box button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #e6b800, #a17b00);
+            color: #000;
+        }
+
+        .admin-popup-box .closeBtn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffd;
+        }
+
+        #admin-error,
+        #dashboard-error {
+            margin-top: 12px;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <span>Caricamento...</span>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header glass">
+        <div class="container header-flex">
+
+            <div class="logo">
+                <img src="img/Disegno1-.png" alt="Logo Zelux">
+                <span>Zelux Studios</span>
+            </div>
+
+            <nav class="nav">
+                <a href="#servizi">Servizi</a>
+                <a href="#dettagli">Dettagli</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#form-contatti">Contatti</a>
+
+                <!-- Area clienti (UNICA, corretta) -->
+                <a href="login.html" class="client-area">Area Clienti</a>
+
+            </nav>
+
+            <div class="burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a onclick="toggleMenu()" href="#servizi">Servizi</a>
+            <a onclick="toggleMenu()" href="#dettagli">Dettagli</a>
+            <a onclick="toggleMenu()" href="#workflow">Workflow</a>
+            <a onclick="toggleMenu()" href="#form-contatti">Contatti</a>
+            <a onclick="toggleMenu()" href="login.html">Area Clienti</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+
+            <div class="hero-text">
+                <h1 class="title-glow">Zelux Studios — Premium Digital Experience</h1>
+                <p class="subtitle">
+                    Web design, branding, grafiche e server Discord professionali.
+                </p>
+                <a href="#servizi" class="cta">Inizia ora</a>
+            </div>
+
+            <div class="hero-logo-box">
+                <img src="img/Disegno1-.png" class="hero-logo" alt="Zelux Logo">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVIZI PRINCIPALI -->
+    <section id="servizi" class="servizi">
+        <div class="container">
+            <h2 class="section-title">Servizi principali</h2>
+
+            <div class="cards">
+
+                <div class="card glass-float">
+                    <img src="img/devoleper_web.png" alt="Web Icon">
+                    <h3>Sviluppo Web</h3>
+                    <p>Siti eleganti, fluidi e ad alto impatto visivo.</p>
+                </div>
+
+                <div class="card glass-float">
+                    <img src="img/image.png" alt="Brand Icon">
+                    <h3>Graphic Design</h3>
+                    <p>Loghi, branding e grafiche professionali.</p>
+                </div>
+
+                <div class="card glass-float">
+                    <img src="img/Logo Dorato di Discord Su Nero.png" alt="Discord Icon">
+                    <h3>Discord Pro</h3>
+                    <p>Server ottimizzati con automazioni e bot.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DETTAGLI -->
+    <section id="dettagli" class="dettagli">
+        <div class="container">
+            <h2 class="section-title">Servizi Dettagliati</h2>
+
+            <div class="dettagli-grid">
+
+                <div class="detail-box glass-float">
+                    <h3>Web Development</h3>
+                    <p>Siti moderni, responsive e professionali.</p>
+                    <ul>
+                        <li>Siti portfolio</li>
+                        <li>Siti aziendali</li>
+                    </ul>
+                    <a class="detail-btn" href="#form-contatti">Richiedi preventivo</a>
+                </div>
+
+                <div class="detail-box glass-float">
+                    <h3>Branding & Graphic</h3>
+                    <p>Identità visiva elegante e su misura.</p>
+                    <ul>
+                        <li>Loghi premium</li>
+                        <li>Copertine social</li>
+                    </ul>
+                    <a class="detail-btn" href="#form-contatti">Richiedi preventivo</a>
+                </div>
+
+                <div class="detail-box glass-float">
+                    <h3>Discord Professional</h3>
+                    <p>Server avanzati per community o aziende.</p>
+                    <ul>
+                        <li>Setup ruoli</li>
+                        <li>Bot personalizzati</li>
+                    </ul>
+                    <a class="detail-btn" href="#form-contatti">Richiedi preventivo</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="workflow" class="workflow">
+        <div class="container">
+            <h2 class="section-title">Come lavoriamo</h2>
+
+            <p class="workflow-subtitle">
+                Un metodo professionale, rapido e trasparente.
+            </p>
+
+            <div class="workflow-grid">
+
+                <div class="workflow-step glass-float">
+                    <img src="img/analisi.png" class="workflow-icon">
+                    <h3>Analisi & Brief</h3>
+                    <p>Studiamo stile, obiettivi e necessità.</p>
+                </div>
+
+                <div class="workflow-step glass-float">
+                    <img src="img/progettazione.png" class="workflow-icon">
+                    <h3>Progettazione</h3>
+                    <p>Creiamo mockup e palette moderne.</p>
+                </div>
+
+                <div class="workflow-step glass-float">
+                    <img src="img/sviluppo.png" class="workflow-icon">
+                    <h3>Sviluppo</h3>
+                    <p>Realizziamo grafiche, siti e server.</p>
+                </div>
+
+                <div class="workflow-step glass-float">
+                    <img src="img/consegna.png" class="workflow-icon">
+                    <h3>Revisione & Consegna</h3>
+                    <p>Affiniamo ogni dettaglio fino alla perfezione.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM CONTATTI -->
+    <section id="form-contatti" class="form-section">
+        <div class="container">
+            <h2 class="section-title">Contattaci</h2>
+            <p class="form-subtitle">Richiedi informazioni o un preventivo.</p>
+
+            <form class="contact-form glass-float" onsubmit="sendContact(event)">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" id="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Messaggio</label>
+                    <textarea id="messaggio" required></textarea>
+                </div>
+
+                <button class="cta form-btn" type="submit">Invia</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer glass">
+        <div class="container footer-flex">
+
+            <p>Zelux Studios © 2025 – Tutti i diritti riservati</p>
+
+            <div class="discord-footer-wrapper">
+
+                <div class="footer-info-arrow">
+                    <span>Per maggiori informazioni</span>
+                    <div class="footer-arrow">↓</div>
+                </div>
+
+                <a href="https://discord.gg/hypTtd55QY" class="discord-icon-footer" target="_blank">
+                    <img src="img/Logo Dorato di Discord Su Nero.png" alt="Discord Zelux">
+                </a>
+
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

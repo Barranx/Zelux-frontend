@@ -1,0 +1,101 @@
+/* ===============================
+   ZELUX PREMIUM GOLD UI – CLIENTI
+   =============================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container principale */
+.dashboard-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/* Titolo pagina */
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: gold;
+    text-shadow: 0 0 10px rgba(255,215,0,0.35);
+    margin-bottom: 30px;
+}
+
+/* Lista messaggi */
+.messages-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.loading,
+.no-msg {
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+/* Card messaggio */
+.message-card {
+    padding: 25px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #111, #0c0c0c);
+    border: 1px solid rgba(255, 215, 0, 0.22);
+    box-shadow:
+        0 0 25px rgba(255, 215, 0, 0.12),
+        inset 0 0 12px rgba(255, 215, 0, 0.08);
+    transition: 0.25s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 35px rgba(255, 215, 0, 0.25),
+        inset 0 0 18px rgba(255, 215, 0, 0.15);
+}
+
+/* Header */
+.msg-header {
+    margin-bottom: 10px;
+}
+
+.msg-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: gold;
+}
+
+.msg-email {
+    font-size: 0.9rem;
+    color: #fff3c4;
+    opacity: 0.85;
+}
+
+/* Divider */
+.msg-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,215,0,0.25);
+    margin: 12px 0 18px 0;
+}
+
+/* Testo messaggio */
+.msg-content {
+    font-size: 1rem;
+    line-height: 1.45rem;
+    margin-bottom: 18px;
+    color: #eaeaea;
+}
+
+/* Data */
+.msg-date {
+    font-size: 0.85rem;
+    opacity: 0.65;
+    color: #dcdcdc;
+}

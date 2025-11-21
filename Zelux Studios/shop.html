@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop – Zelux Studios</title>
+
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="shop.css?v=3">
+
+    <!-- Versione corretta -->
+    <script defer src="shop.js?v=200"></script>
+</head>
+
+<body>
+
+<header class="shop-header">
+    <div class="shop-left">
+        <img src="img/Disegno1-.png" class="shop-logo">
+        <span class="shop-title">🛒 Shop Zelux Studios</span>
+    </div>
+
+    <div class="shop-right">
+        <span id="user-welcome" class="welcome-user"></span>
+        <button onclick="window.location.href='client-dashboard.html'" class="shop-btn profile-btn">
+            Profilo
+        </button>
+        <button onclick="toggleCart()" class="shop-btn">Carrello</button>
+    </div>
+</header>
+
+<!-- Carrello -->
+<div id="cart-panel">
+    <div class="cart-header">
+        <h2>🛒 Il tuo carrello</h2>
+        <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+
+    <div id="cart-items" class="cart-items">
+        <p class="cart-empty">Il carrello è vuoto</p>
+    </div>
+
+    <div class="cart-footer">
+        <div class="total-row">
+            <span>Totale:</span>
+            <span id="cart-total">0.00€</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">
+            Procedi al pagamento →
+        </button>
+    </div>
+</div>
+
+<!-- Categorie -->
+<section class="category-bar">
+    <button class="cat-btn" onclick="filterProducts('all')">Tutti</button>
+    <button class="cat-btn" onclick="filterProducts('fivem')">FiveM</button>
+    <button class="cat-btn" onclick="filterProducts('discord')">Discord</button>
+    <button class="cat-btn" onclick="filterProducts('web')">Web</button>
+    <button class="cat-btn" onclick="filterProducts('grafica')">Grafica</button>
+    <button class="cat-btn" onclick="filterProducts('games')">Minecraft • Roblox</button>
+</section>
+
+<!-- Prodotti -->
+<section class="shop-section">
+    <div class="shop-container">
+        <h2 class="section-title">I nostri prodotti</h2>
+
+        <div id="products" class="products-grid">
+
+            <div class="product-card" data-cat="fivem">
+                <img src="img/products/fivem_server.png" class="product-img">
+                <h3>Server FiveM Su Misura</h3>
+                <p>Server completi e ottimizzati.</p>
+                <span class="price">Da 20€</span>
+                <button onclick="addToCart(1, 'Server FiveM Su Misura', 20)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="fivem">
+                <img src="img/products/fivem_script.png" class="product-img">
+                <h3>Script FiveM</h3>
+                <p>Script personalizzati o shop.</p>
+                <span class="price">Da 8€</span>
+                <button onclick="addToCart(2, 'Script FiveM', 8)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="discord">
+                <img src="img/products/discord_server.png" class="product-img">
+                <h3>Server Discord Su Misura</h3>
+                <p>Setup professionale completo.</p>
+                <span class="price">Da 15€</span>
+                <button onclick="addToCart(3, 'Server Discord', 15)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="discord">
+                <img src="img/products/discord_bot.png" class="product-img">
+                <h3>Bot Discord</h3>
+                <p>Bot avanzati con IA e pannello.</p>
+                <span class="price">Da 25€</span>
+                <button onclick="addToCart(4, 'Bot Discord', 25)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="grafica">
+                <img src="img/products/grafica.png" class="product-img">
+                <h3>Grafiche Professionali</h3>
+                <p>Logo, banner, branding.</p>
+                <span class="price">Da 10€</span>
+                <button onclick="addToCart(5, 'Grafiche Professionali', 10)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="games">
+                <img src="img/products/roblox.png" class="product-img">
+                <h3>Server Roblox</h3>
+                <p>Modalità personalizzate.</p>
+                <span class="price">Da 20€</span>
+                <button onclick="addToCart(6, 'Server Roblox', 20)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="games">
+                <img src="img/products/minecraft.png" class="product-img">
+                <h3>Server Minecraft</h3>
+                <p>Plugin, modpack, ottimizzazioni.</p>
+                <span class="price">Da 25€</span>
+                <button onclick="addToCart(7, 'Server Minecraft', 25)">Aggiungi al carrello</button>
+            </div>
+
+            <div class="product-card" data-cat="web">
+                <img src="img/products/website.png" class="product-img">
+                <h3>Siti Web Su Misura</h3>
+                <p>Siti moderni e veloci.</p>
+                <span class="price">Da 50€</span>
+                <button onclick="addToCart(8, 'Siti Web Su Misura', 50)">Aggiungi al carrello</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) window.location.href = "login.html";
+
+    checkAuth();
+    updateCartUI();
+
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        document.getElementById("user-welcome").textContent =
+            "Ciao, " + (payload.full_name || "Utente");
+    } catch (e) {
+        console.error("Token error:", e);
+    }
+});
+</script>
+
+</body>
+</html>
